@@ -70,8 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return storedTheme;
         }
 
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        return prefersDark ? 'dark' : 'light';
+        return 'dark';
     };
 
     const updateToggleState = (theme) => {

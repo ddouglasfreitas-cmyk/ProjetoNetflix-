@@ -11,8 +11,7 @@ function getPreferredTheme() {
         return storedTheme; // Retorna o tema salvo se ele for valido.
     }
 
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches; // Verifica preferencia do sistema operacional.
-    return prefersDark ? "dark" : "light"; // Define tema padrao com base na preferencia do sistema.
+    return "dark"; // Define o modo escuro como tema padrao inicial.
 }
 
 function updateToggleState(theme) {
