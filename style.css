@@ -1,0 +1,446 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&display=swap"); /* Importa fontes da marca e interface */
+
+:root {
+    --bg-main: #141414; /* Cor base do fundo principal (modo escuro) */
+    --bg-top: #0b0b0b; /* Cor da parte superior do fundo */
+    --surface: #181818; /* Cor de superfícies como cards */
+    --surface-border: #2a2a2a; /* Cor de borda padrão das superfícies */
+    --netflix-red: #e50914; /* Vermelho principal da marca */
+    --text-main: #ffffff; /* Cor principal dos textos */
+    --text-muted: #b3b3b3; /* Cor de textos secundários */
+    --text-hover: #f5f5f5; /* Cor de texto ao passar o mouse */
+    --focus-ring: rgba(229, 9, 20, 0.45); /* Cor do contorno de foco para acessibilidade */
+    --control-border: #737373; /* Cor da borda de botões/controles */
+    --control-text: #b3b3b3; /* Cor do texto de botões/controles */
+    --control-hover-border: #ffffff; /* Cor da borda dos controles no hover */
+    --control-hover-text: #ffffff; /* Cor do texto dos controles no hover */
+    --control-hover-bg: rgba(255, 255, 255, 0.06); /* Fundo dos controles no hover */
+    --toggle-track-bg: #1e1e1e; /* Cor do trilho do toggle */
+    --toggle-track-border: #5a5a5a; /* Cor da borda do trilho do toggle */
+    --toggle-thumb-bg: #f5f5f5; /* Cor da bolinha do toggle */
+    --toggle-thumb-shadow: rgba(0, 0, 0, 0.45); /* Sombra da bolinha do toggle */
+    --card-glow: rgba(229, 9, 20, 0.22); /* Brilho vermelho dos cards */
+    --header-bg: rgba(11, 11, 11, 0.58); /* Fundo do cabecalho com transparencia */
+}
+
+[data-theme="light"] {
+    --bg-main: #f5f5f7; /* Cor base do fundo no tema claro */
+    --bg-top: #ffffff; /* Cor do topo no tema claro */
+    --surface: #ececef; /* Cor de superfícies no tema claro */
+    --surface-border: #c7c7cc; /* Cor de borda de superfícies no tema claro */
+    --text-main: #121212; /* Cor principal dos textos no tema claro */
+    --text-muted: #535353; /* Cor de textos secundários no tema claro */
+    --text-hover: #000000; /* Cor de texto no hover no tema claro */
+    --focus-ring: rgba(229, 9, 20, 0.35); /* Cor do foco no tema claro */
+    --control-border: #7f7f7f; /* Cor da borda dos controles no tema claro */
+    --control-text: #303030; /* Cor do texto dos controles no tema claro */
+    --control-hover-border: #121212; /* Cor da borda no hover (tema claro) */
+    --control-hover-text: #121212; /* Cor do texto no hover (tema claro) */
+    --control-hover-bg: rgba(0, 0, 0, 0.04); /* Fundo no hover (tema claro) */
+    --toggle-track-bg: #d9d9dd; /* Cor do trilho do toggle no tema claro */
+    --toggle-track-border: #9e9ea3; /* Cor da borda do trilho no tema claro */
+    --toggle-thumb-bg: #ffffff; /* Cor da bolinha no tema claro */
+    --toggle-thumb-shadow: rgba(0, 0, 0, 0.22); /* Sombra da bolinha no tema claro */
+    --card-glow: rgba(229, 9, 20, 0.15); /* Brilho suave dos cards no tema claro */
+    --header-bg: rgba(255, 255, 255, 0.65); /* Fundo do cabecalho com transparencia no tema claro */
+}
+
+* {
+    margin: 0; /* Remove margens padrão dos elementos */
+    padding: 0; /* Remove espaçamentos internos padrão */
+    box-sizing: border-box; /* Inclui borda/padding no cálculo de largura e altura */
+}
+
+body {
+    min-height: 100vh; /* Garante altura mínima igual à tela inteira */
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif; /* Define fonte principal da pagina */
+    color: var(--text-main); /* Aplica a cor principal de texto */
+    background:
+        radial-gradient(circle at 20% 8%, rgba(229, 9, 20, 0.2), transparent 36%), /* Mancha vermelha no topo esquerdo */
+        radial-gradient(circle at 82% 20%, rgba(255, 255, 255, 0.06), transparent 30%), /* Ponto de luz no topo direito */
+        linear-gradient(180deg, var(--bg-top) 0%, var(--bg-main) 22%); /* Degrade vertical de fundo */
+    transition: background 250ms ease, color 250ms ease; /* Suaviza troca entre temas */
+    position: relative; /* Base para elementos decorativos de fundo */
+    overflow-x: hidden; /* Evita rolagem lateral causada pelos efeitos */
+}
+
+body.page-exit {
+    opacity: 0; /* Cria fade-out ao trocar de pagina */
+    transform: scale(1.015); /* Leve zoom para transicao cinematografica */
+    transition: opacity 320ms ease, transform 320ms ease; /* Suaviza saida da pagina */
+}
+
+body::before,
+body::after {
+    content: ""; /* Cria camadas decorativas de fundo */
+    position: fixed; /* Mantem os elementos presos ao viewport */
+    pointer-events: none; /* Permite clicar normalmente nos elementos da pagina */
+    z-index: -1; /* Mantem os elementos atras do conteudo */
+}
+
+body::before {
+    width: min(44vw, 520px); /* Define tamanho maximo da forma */
+    aspect-ratio: 1 / 1; /* Mantem proporcao quadrada */
+    border-radius: 44% 56% 63% 37% / 39% 41% 59% 61%; /* Cria forma organica */
+    background: radial-gradient(circle at 30% 30%, rgba(229, 9, 20, 0.24), rgba(229, 9, 20, 0) 70%); /* Glow vermelho */
+    top: -18%; /* Posiciona no topo */
+    left: -10%; /* Posiciona para fora da tela */
+    filter: blur(10px); /* Suaviza bordas */
+}
+
+body::after {
+    width: min(36vw, 440px); /* Define tamanho maximo da forma */
+    aspect-ratio: 1 / 1; /* Mantem proporcao quadrada */
+    border-radius: 48% 52% 38% 62% / 50% 36% 64% 50%; /* Cria forma organica diferente */
+    background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0) 72%); /* Glow claro */
+    right: -12%; /* Posiciona para fora da tela */
+    bottom: -20%; /* Posiciona abaixo do viewport */
+    filter: blur(8px); /* Suaviza bordas */
+}
+
+.site-header {
+    width: 100%; /* Faz o cabecalho ocupar toda a largura */
+    padding: 22px clamp(20px, 4vw, 58px); /* Espacamento responsivo interno do cabecalho */
+    display: flex; /* Ativa flexbox no cabecalho */
+    align-items: center; /* Alinha itens verticalmente ao centro */
+    justify-content: space-between; /* Separa logo e toggle nas extremidades */
+    gap: 12px; /* Espaco entre itens do cabecalho */
+    position: sticky; /* Mantem o cabecalho visivel no topo */
+    top: 0; /* Posicao de fixacao */
+    backdrop-filter: blur(12px); /* Efeito de vidro */
+    background: var(--header-bg); /* Fundo transluscido */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* Linha divisoria suave */
+    z-index: 10; /* Mantem o cabecalho acima do conteudo */
+}
+
+.logo {
+    font-family: "Bebas Neue", "Arial Narrow", Arial, sans-serif; /* Fonte da marca */
+    color: var(--netflix-red); /* Cor vermelha da logo */
+    font-size: clamp(2.3rem, 3.3vw, 3.15rem); /* Tamanho responsivo da logo */
+    font-weight: 400; /* Peso da fonte da logo */
+    letter-spacing: 0.08em; /* Espacamento entre letras */
+    text-transform: uppercase; /* Forca texto em maiusculas */
+    line-height: 1; /* Altura de linha compacta da logo */
+}
+
+.logo-plus {
+    display: inline-block;
+    margin-left: 0.01em;
+    font-size: 0.54em;
+    color: rgba(255, 255, 255, 0.9);
+    opacity: 0;
+    transform: translateY(-0.3em) scale(0.96);
+    text-shadow: 0 0 0 rgba(229, 9, 20, 0);
+    animation: logo-plus-reveal 1100ms cubic-bezier(0.22, 0.61, 0.36, 1) 450ms forwards;
+}
+
+@keyframes logo-plus-reveal {
+    0% {
+        opacity: 0;
+        transform: translateY(-0.3em) scale(0.96);
+        text-shadow: 0 0 0 rgba(229, 9, 20, 0);
+    }
+
+    58% {
+        opacity: 0.82;
+        transform: translateY(-0.4em) scale(1.04);
+        text-shadow: 0 0 6px rgba(229, 9, 20, 0.2);
+    }
+
+    100% {
+        opacity: 0.74;
+        transform: translateY(-0.35em) scale(1);
+        text-shadow: 0 0 0 rgba(229, 9, 20, 0);
+    }
+}
+
+.profile-screen {
+    width: min(980px, 100%); /* Limita largura maxima mantendo responsividade */
+    min-height: calc(100vh - 94px); /* Garante area principal ocupando quase toda a tela */
+    display: flex; /* Ativa flexbox no container principal */
+    flex-direction: column; /* Organiza elementos em coluna */
+    align-items: center; /* Centraliza elementos no eixo horizontal */
+    justify-content: center; /* Centraliza elementos no eixo vertical */
+    gap: 34px; /* Espaco vertical entre blocos */
+    margin-inline: auto; /* Centraliza horizontalmente no viewport */
+    padding: 30px clamp(14px, 2.8vw, 24px) 56px; /* Espacamento interno responsivo */
+}
+
+.theme-btn {
+    width: 64px; /* Largura do toggle */
+    height: 34px; /* Altura do toggle */
+    border: 1px solid var(--toggle-track-border); /* Borda do trilho */
+    border-radius: 999px; /* Deixa o trilho arredondado */
+    background: var(--toggle-track-bg); /* Cor de fundo do trilho */
+    padding: 2px; /* Espaco interno para a bolinha */
+    cursor: pointer; /* Cursor de botao clicavel */
+    position: relative; /* Base para pseudo-elementos posicionados */
+    overflow: hidden; /* Esconde partes que ultrapassem o trilho */
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06); /* Brilho interno sutil */
+    transition: border-color 180ms ease, background-color 180ms ease, box-shadow 180ms ease; /* Animacoes suaves */
+}
+
+.theme-btn::before,
+.theme-btn::after {
+    content: ""; /* Cria elementos decorativos (icone visual de estado) */
+    position: absolute; /* Posiciona dentro do toggle */
+    top: 50%; /* Alinha verticalmente ao centro */
+    width: 8px; /* Largura do indicador */
+    height: 8px; /* Altura do indicador */
+    border-radius: 50%; /* Forma circular */
+    transform: translateY(-50%); /* Ajuste fino para centralizacao vertical */
+    transition: opacity 180ms ease; /* Suaviza mudanca de visibilidade */
+}
+
+.theme-btn::before {
+    left: 10px; /* Posiciona indicador esquerdo */
+    background: #9fa2a8; /* Cor do indicador esquerdo */
+    opacity: 1; /* Mantem indicador esquerdo visivel no modo escuro */
+}
+
+.theme-btn::after {
+    right: 10px; /* Posiciona indicador direito */
+    background: #f6c047; /* Cor do indicador direito */
+    opacity: 0.35; /* Deixa indicador direito mais discreto no modo escuro */
+}
+
+.theme-btn .theme-toggle-thumb {
+    display: block; /* Garante comportamento em bloco da bolinha */
+    width: 26px; /* Largura da bolinha do toggle */
+    height: 26px; /* Altura da bolinha do toggle */
+    border-radius: 50%; /* Forma circular da bolinha */
+    background: var(--toggle-thumb-bg); /* Cor da bolinha */
+    transform: translateX(0); /* Posicao inicial da bolinha (modo escuro) */
+    box-shadow: 0 2px 8px var(--toggle-thumb-shadow); /* Sombra para profundidade */
+    transition: transform 220ms cubic-bezier(0.22, 0.8, 0.24, 1), box-shadow 180ms ease; /* Animacao suave da bolinha */
+}
+
+[data-theme="light"] .theme-btn .theme-toggle-thumb {
+    transform: translateX(30px); /* Move bolinha para direita no tema claro */
+}
+
+[data-theme="light"] .theme-btn::before {
+    opacity: 0.35; /* Reduz destaque do indicador esquerdo no tema claro */
+}
+
+[data-theme="light"] .theme-btn::after {
+    opacity: 1; /* Destaca indicador direito no tema claro */
+}
+
+.theme-btn:hover,
+.theme-btn:focus-visible {
+    border-color: var(--control-hover-border); /* Destaca borda no hover/foco */
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2); /* Realca trilho no hover/foco */
+}
+
+.theme-btn:focus-visible {
+    background: var(--control-hover-bg); /* Fundo adicional para estado de foco */
+    outline: 3px solid var(--focus-ring); /* Contorno de foco acessivel */
+    outline-offset: 3px; /* Distancia do contorno em relacao ao botao */
+}
+
+h1 {
+    text-align: center; /* Centraliza o titulo */
+    font-size: clamp(1.85rem, 4.7vw, 3.45rem); /* Escala responsiva do tamanho da fonte */
+    font-weight: 700; /* Peso da fonte do titulo */
+    letter-spacing: 0.01em; /* Pequeno espacamento entre letras */
+    line-height: 1.2; /* Altura de linha do titulo */
+    text-wrap: balance; /* Melhor quebra de linha em telas pequenas */
+    text-shadow: 0 8px 26px rgba(0, 0, 0, 0.35); /* Sombra cinematografica do titulo */
+}
+
+.perfis {
+    list-style: none; /* Remove marcadores da lista */
+    display: grid; /* Usa grid para distribuir perfis */
+    grid-template-columns: repeat(4, minmax(128px, 1fr)); /* Cria 4 colunas responsivas */
+    gap: clamp(16px, 2.6vw, 32px); /* Espacamento entre os perfis */
+    perspective: 900px; /* Cria profundidade para o efeito 3D dos cards */
+}
+
+.perfil {
+    border-radius: 14px; /* Forma base para foco e sombra */
+    transform: translateY(18px); /* Estado inicial para animacao de entrada */
+    opacity: 0; /* Estado inicial para animacao de entrada */
+    transition: transform 560ms cubic-bezier(0.19, 1, 0.22, 1), opacity 440ms ease; /* Animacao de entrada suave */
+}
+
+.perfil.is-visible {
+    transform: translateY(0); /* Posicao final da animacao de entrada */
+    opacity: 1; /* Torna o card visivel ao finalizar a entrada */
+}
+
+.perfil figure {
+    display: flex; /* Ativa flexbox para imagem e legenda */
+    flex-direction: column; /* Organiza elementos em coluna */
+    align-items: center; /* Centraliza horizontalmente */
+    gap: 11px; /* Espaco entre imagem e nome */
+    padding: 10px; /* Cria area interna para efeito de card */
+    border-radius: 14px; /* Borda arredondada do card */
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01)); /* Fundo leve do card */
+    border: 1px solid rgba(255, 255, 255, 0.08); /* Borda base do card */
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2); /* Sombra inicial do card */
+    transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)); /* Rotacao dinamica controlada por JS */
+    transform-style: preserve-3d; /* Mantem profundidade no efeito 3D */
+    transition: transform 180ms ease, border-color 180ms ease, box-shadow 220ms ease, background 220ms ease; /* Suaviza interacoes */
+}
+
+.perfil img {
+    width: clamp(112px, 15.8vw, 170px); /* Largura responsiva da foto de perfil */
+    aspect-ratio: 1 / 1; /* Mantem formato quadrado */
+    object-fit: cover; /* Preenche o quadro recortando excesso */
+    border: 2px solid var(--surface-border); /* Borda padrão da imagem */
+    border-radius: 6px; /* Arredonda levemente os cantos */
+    background: var(--surface); /* Cor de fundo caso imagem nao carregue */
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28); /* Sombra para profundidade */
+    transition: border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease; /* Suaviza efeitos no hover */
+    position: relative; /* Permite controle de camada no 3D */
+    transform: translateZ(16px); /* Destaca imagem no efeito 3D */
+}
+
+.perfil figure a {
+    text-decoration: none; /* Remove o sublinhado que o navegador coloca em links */
+    color: inherit; /* Herda a cor do elemento pai, evitando o roxo/azul padrão de links */
+    display: flex; /* Mantém a imagem e o nome alinhados como antes */
+    flex-direction: column; /* Empilha imagem em cima e nome embaixo */
+    align-items: center; /* Centraliza ambos horizontalmente */
+    gap: inherit; /* Mantém o espaçamento já definido no figure */
+}
+
+.perfil figcaption {
+    font-size: clamp(0.95rem, 1.25vw, 1.18rem); /* Tamanho responsivo do nome do perfil */
+    color: var(--text-muted); /* Cor inicial do nome */
+    transition: color 180ms ease; /* Suaviza mudanca de cor no hover */
+    font-weight: 600; /* Deixa nome do perfil mais forte */
+    transform: translateZ(18px); /* Eleva legenda no efeito 3D */
+}
+
+.perfil:hover img,
+.perfil:focus-within img {
+    border-color: var(--text-main); /* Destaca borda da imagem no hover/foco */
+    transform: scale(1.03) translateZ(16px); /* Aumenta e preserva profundidade da imagem */
+    box-shadow: 0 12px 22px rgba(0, 0, 0, 0.36); /* Intensifica sombra ao interagir */
+}
+
+.perfil:hover figure,
+.perfil:focus-within figure {
+    border-color: rgba(255, 255, 255, 0.24); /* Destaca borda do card no hover */
+    box-shadow: 0 18px 34px rgba(0, 0, 0, 0.32), 0 0 0 1px rgba(255, 255, 255, 0.06), 0 0 32px var(--card-glow); /* Glow no card */
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.03)); /* Fundo mais vivo no hover */
+}
+
+.perfil:hover figcaption,
+.perfil:focus-within figcaption {
+    color: var(--text-hover); /* Clareia nome do perfil ao interagir */
+}
+
+.perfil:focus-within {
+    outline: 3px solid var(--focus-ring); /* Mostra foco acessivel em navegacao por teclado */
+    outline-offset: 6px; /* Afasta contorno de foco do elemento */
+    border-radius: 10px; /* Arredonda contorno do foco */
+}
+
+.manage-btn {
+    border: 1px solid var(--control-border); /* Borda do botao */
+    background: transparent; /* Fundo transparente do botao */
+    color: var(--control-text); /* Cor do texto do botao */
+    padding: 12px 28px; /* Espacamento interno do botao */
+    font-size: 0.9rem; /* Tamanho da fonte do botao */
+    font-weight: 600; /* Peso da fonte do botao */
+    letter-spacing: 0.16em; /* Espacamento entre letras */
+    text-transform: uppercase; /* Texto em maiusculas */
+    cursor: pointer; /* Cursor de clique */
+    border-radius: 999px; /* Torna o botao em formato pill */
+    transition: border-color 160ms ease, color 160ms ease, background-color 160ms ease, transform 160ms ease, box-shadow 160ms ease; /* Animacoes suaves no hover */
+}
+
+.manage-btn:hover,
+.manage-btn:focus-visible {
+    border-color: var(--control-hover-border); /* Destaca borda ao interagir */
+    color: var(--control-hover-text); /* Destaca texto ao interagir */
+    background: var(--control-hover-bg); /* Aplica fundo de hover/foco */
+    transform: translateY(-2px); /* Eleva botao ao interagir */
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2); /* Adiciona profundidade ao botao */
+}
+
+.manage-btn:focus-visible {
+    outline: 3px solid var(--focus-ring); /* Define contorno de foco acessivel */
+    outline-offset: 3px; /* Distancia do contorno de foco */
+}
+
+@media (max-width: 900px) {
+    .perfis {
+        grid-template-columns: repeat(2, minmax(124px, 1fr)); /* Em telas menores usa 2 colunas */
+    }
+
+    .profile-screen {
+        width: min(760px, 100%); /* Ajusta area principal em tablets */
+    }
+}
+
+@media (max-width: 520px) {
+    .site-header {
+        padding-top: 18px; /* Ajusta espacamento superior no mobile */
+        padding-bottom: 12px; /* Ajusta espacamento inferior no mobile */
+    }
+
+    .theme-btn {
+        width: 58px; /* Reduz largura do toggle no mobile */
+        height: 32px; /* Reduz altura do toggle no mobile */
+    }
+
+    .theme-btn .theme-toggle-thumb {
+        width: 24px; /* Reduz tamanho da bolinha no mobile */
+        height: 24px; /* Reduz tamanho da bolinha no mobile */
+    }
+
+    [data-theme="light"] .theme-btn .theme-toggle-thumb {
+        transform: translateX(26px); /* Ajusta deslocamento da bolinha no mobile */
+    }
+
+    .profile-screen {
+        justify-content: flex-start; /* Inicia conteudo no topo em telas pequenas */
+        gap: 24px; /* Ajusta espacamento entre blocos no mobile */
+        padding-top: 20px; /* Ajusta padding superior no mobile */
+    }
+
+    h1 {
+        margin-bottom: 0; /* Remove margem inferior extra do titulo no mobile */
+    }
+
+    .perfis {
+        gap: 16px; /* Ajusta espacamento da grade de perfis no mobile */
+    }
+
+    .perfil figure {
+        padding: 8px; /* Reduz area interna dos cards no mobile */
+    }
+
+    .manage-btn {
+        margin-top: 2px; /* Pequeno espacamento acima do botao no mobile */
+        padding-inline: 20px; /* Ajusta padding horizontal do botao no mobile */
+        letter-spacing: 0.11em; /* Reduz espacamento entre letras no mobile */
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important; /* Reduz animacoes para acessibilidade */
+        animation-iteration-count: 1 !important; /* Evita repeticoes de animacao */
+        transition-duration: 0.01ms !important; /* Reduz duracao de transicoes */
+        scroll-behavior: auto !important; /* Evita scroll animado */
+    }
+
+    .perfil {
+        transform: none; /* Remove deslocamento inicial da animacao */
+        opacity: 1; /* Mantem cards visiveis sem animacao */
+    }
+
+    .logo-plus {
+        animation: none; /* Evita animacao continua para usuarios com reducao de movimento */
+        transform: translateY(-0.35em);
+        opacity: 0.84;
+        text-shadow: none;
+    }
+}

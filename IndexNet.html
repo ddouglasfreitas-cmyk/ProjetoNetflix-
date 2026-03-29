@@ -1,0 +1,72 @@
+<!DOCTYPE html> <!-- Informa ao navegador que o documento usa HTML5 -->
+<html lang="pt-br"> <!-- Define o idioma da página como português do Brasil -->
+
+<head> <!-- Início da área de metadados/configurações da página -->
+    <meta charset="UTF-8"> <!-- Define a codificação para suportar acentos e caracteres especiais -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Faz o layout adaptar corretamente em celulares -->
+    <title>Netflix+</title> <!-- Define o título exibido na aba do navegador -->
+    <link rel="stylesheet" href="style.css"> <!-- Conecta o arquivo de estilos CSS da página -->
+    <script src="script.js" defer></script> <!-- Carrega o JavaScript que controla dark/light mode -->
+</head>
+
+<body> <!-- Início do conteúdo visível para o usuário -->
+    <header class="site-header"> <!-- Topo da página com a marca -->
+        <p class="logo">Netflix<span class="logo-plus" aria-hidden="true">+</span></p> <!-- Marca com inspiração no logo da Netflix -->
+        <button id="theme-toggle" class="theme-btn" type="button" aria-pressed="true" aria-label="Ativar modo claro" title="Alternar tema"> <!-- Botão toggle para alternar entre dark e light mode -->
+            <span class="theme-toggle-thumb" aria-hidden="true"></span> <!-- Indicador visual do toggle -->
+        </button>
+    </header>
+
+    <main class="profile-screen"> <!-- Conteúdo principal da página -->
+        <h1>Quem está assistindo?</h1> <!-- Título principal da tela de seleção de perfis -->
+        <section aria-label="Seleção de perfis"> <!-- Seção semântica com rótulo para acessibilidade -->
+            <ul class="perfis"> <!-- Lista não ordenada com os perfis -->
+                <li class="perfil"> <!-- Item da lista representando um perfil -->
+                    <figure> <!-- Agrupa imagem e legenda do perfil -->
+                        <a href="catalogo/catalogo.html"> <!-- Link para o catálogo do perfil 1 -->
+                            <img src="assets/Perfil 1.png"
+                                alt="Personagem Kratos com camisa do Flamengo — retrato intenso em vermelho">
+                            <!-- Exibe a imagem do perfil 1; alt descreve a imagem para acessibilidade -->
+                            <figcaption>João</figcaption> <!-- Nome exibido abaixo da imagem do perfil -->
+                        </a>
+                    </figure>
+                </li>
+                <li class="perfil"> <!-- Item da lista representando um perfil -->
+                    <figure> <!-- Agrupa imagem e legenda do perfil -->
+                        <a href="catalogo/catalogo.html"> <!-- Link para o catálogo do perfil 2 -->
+                            <img src="assets/Perfil 2.png"
+                                alt="Personagem Sub-Zero com camisa do Grêmio — personagem em azul e preto cercado por efeitos de gelo">
+                            <!-- Exibe a imagem do perfil 2; alt descreve a imagem para acessibilidade -->
+                            <figcaption>Paulo</figcaption> <!-- Nome exibido abaixo da imagem do perfil -->
+                        </a>
+                    </figure>
+                </li>
+                <li class="perfil"> <!-- Item da lista representando um perfil -->
+                    <figure> <!-- Agrupa imagem e legenda do perfil -->
+                        <a href="catalogo/catalogo.html"> <!-- Link para o catálogo do perfil 3 -->
+                        <img src="assets/Perfil 3.png"
+                            alt="Personagem Link c om camisa do Palmeiras — herói em verde com aura mágica e símbolos da Triforce ao fundo.">
+                        <!-- Exibe a imagem do perfil 3; alt descreve a imagem para acessibilidade -->
+                        <figcaption>Carlos</figcaption> <!-- Nome exibido abaixo da imagem do perfil -->
+                        </a>
+                    </figure>
+                </li>
+                <li class="perfil"> <!-- Item da lista representando um perfil -->
+                    <figure> <!-- Agrupa imagem e legenda do perfil -->
+                        <a href="catalogo/catalogo.html"> <!-- Link para o catálogo do perfil 4 -->
+                            <img src="assets/Perfil 4.png"
+                                alt="Personagem Mario com camisa do Fortaleza em cenário digital">
+                            <!-- Exibe a imagem do perfil 4; alt descreve a imagem para acessibilidade -->
+                            <figcaption>Ana</figcaption> <!-- Nome exibido abaixo da imagem do perfil -->
+                        </a>
+                    </figure>
+                </li>
+            </ul>
+        </section>
+
+        <button type="button" class="manage-btn">Gerenciar perfis</button> <!-- Botão de ação da tela de perfis -->
+    </main>
+</body>
+
+</html>

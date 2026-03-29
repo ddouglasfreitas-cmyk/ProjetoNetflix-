@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix+</title>
+    <link rel="stylesheet" href="catalogo.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar" id="navbar">
+        <div class="navbar-left">
+            <a href="catalogo.html" class="brand-link" aria-label="Netflix+">
+                <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
+                    alt="Netflix">
+                <span class="logo-plus" aria-hidden="true">+</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="https://www.alura.com.br/" class="active">Início</a></li>
+                    <li><a href="https://www.alura.com.br/">Séries</a></li>
+                    <li><a href="https://www.alura.com.br/">Filmes</a></li>
+                    <li><a href="https://www.alura.com.br/">Jogos</a></li>
+                    <li><a href="https://www.alura.com.br/">Bombando</a></li>
+                    <li><a href="https://www.alura.com.br/">Minha lista</a></li>
+                    <li><a href="https://www.alura.com.br/">Melhores da Alura</a></li>
+                </ul>
+            </nav>
+                <div class="platform-switcher" aria-label="Selecionar plataforma de streaming">
+                <button id="platform-menu-trigger" class="platform-menu-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="platform-options-panel">
+                    <span>Plataformas</span>
+                    <span id="platform-active-brand" class="platform-active-brand" aria-hidden="true">Geral</span>
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div id="platform-options-panel" class="platform-options" role="menu" aria-label="Plataformas">
+                    <button type="button" class="platform-option is-active" data-platform="geral" role="tab" aria-selected="true">Geral</button>
+                    <button type="button" class="platform-option" data-platform="netflix" role="tab" aria-selected="false">Netflix+</button>
+                    <button type="button" class="platform-option" data-platform="hbo" role="tab" aria-selected="false">HBO</button>
+                    <button type="button" class="platform-option" data-platform="crunchyroll" role="tab" aria-selected="false">Crunchyroll</button>
+                    <button type="button" class="platform-option" data-platform="disneyplus" role="tab" aria-selected="false">Disney+</button>
+                    <button type="button" class="platform-option" data-platform="paramount" role="tab" aria-selected="false">Paramount+</button>
+                </div>
+            </div>
+        </div>
+        <div class="navbar-right">
+            <button id="theme-toggle" class="theme-btn" type="button" aria-pressed="true" aria-label="Ativar modo claro" title="Alternar tema">
+                <span class="theme-toggle-thumb" aria-hidden="true"></span>
+            </button>
+            <i class="fas fa-search icon"></i>
+            <div class="nav-notification">
+                <i class="fas fa-bell icon"></i>
+                <span class="notification-badge">42</span>
+            </div>
+            <a href="../IndexNet.html" class="profile-menu" style="text-decoration: none; color: inherit;">
+                <img class="profile-icon" src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
+                    alt="Profile">
+                <i class="fas fa-caret-down icon" style="font-size: 14px; margin-left: 5px;"></i>
+            </a>
+        </div>
+    </header>
+
+    <section class="hero-banner" aria-label="Destaque da semana">
+        <div class="hero-trailer" aria-hidden="true">
+            <iframe id="hero-trailer-frame" title="Trailer do destaque" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <button id="hero-mute-trigger" type="button" class="hero-mute-btn" aria-label="Mutar/desmutar trailer" title="Mutar/desmutar trailer" aria-pressed="false">
+                <i class="fas fa-volume-up" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="hero-content">
+            <p class="hero-kicker">Destaque da Semana</p>
+            <h1 class="hero-title">Homem-Aranha: Um Novo Dia</h1>
+            <p class="hero-description">Peter Parker enfrenta novos desafios, velhos inimigos e escolhas que podem mudar seu destino em uma aventura cheia de acao e emocao.</p>
+            <div class="hero-actions">
+                <button id="hero-play-trigger" type="button" class="hero-btn hero-btn-play"><i class="fas fa-play" aria-hidden="true"></i> Assistir</button>
+                <button id="hero-info-trigger" type="button" class="hero-btn hero-btn-info"><i class="fas fa-info-circle" aria-hidden="true"></i> Mais informacoes</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="hero-info-modal" class="hero-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="hero-modal-title">
+        <div class="hero-modal-backdrop" data-close-modal="true"></div>
+        <div class="hero-modal-content">
+            <button id="hero-modal-close" class="hero-modal-close" type="button" aria-label="Fechar modal"><i class="fas fa-times" aria-hidden="true"></i></button>
+            <p class="hero-modal-kicker">Filme em Destaque</p>
+            <h2 id="hero-modal-title" class="hero-modal-title">Homem-Aranha: Um Novo Dia</h2>
+            <p class="hero-modal-description">Peter Parker encara um novo ciclo com desafios pessoais e ameaças inesperadas. Entre dilemas e grandes batalhas, ele precisara decidir ate onde vai para proteger quem ama.</p>
+            <div class="hero-modal-meta">
+                <span>Acao</span>
+                <span>Aventura</span>
+                <span>2h 14m</span>
+                <span>HD</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sliders Container -->
+    <main class="sliders-container" id="main-content">
+        <!-- Javascript will inject the rows here -->
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <a href="https://www.alura.com.br/" target="_blank">
+                <p>Imersão Alura AI</p>
+            </a>
+            <ul class="footer-links">
+                <li><a href="https://www.alura.com.br/" target="_blank">Perguntas frequentes</a></li>
+                <li><a href="https://www.alura.com.br/" target="_blank">Centro de ajuda</a></li>
+                <li><a href="https://www.alura.com.br/" target="_blank">Conta</a></li>
+                <li><a href="https://www.alura.com.br/" target="_blank">Imprensa</a></li>
+                <li><a href="https://www.alura.com.br/" target="_blank">Relações com investidores</a></li>
+                <li><a href="https://www.alura.com.br/" target="_blank">Carreiras</a></li>
+                <li><a href="https://www.alura.com.br/" target="_blank">Formas de assistir</a></li>
+                <li><a href="https://www.alura.com.br/" target="_blank">Termos de uso</a></li>
+                <li><a href="https://www.alura.com.br/" target="_blank">Privacidade</a></li>
+                <li><a href="https://www.alura.com.br/" target="_blank">Preferências de cookies</a></li>
+                <li><a href="https://www.alura.com.br/" target="_blank">Informações corporativas</a></li>
+                <li><a href="https://www.alura.com.br/" target="_blank">Entre em contato</a></li>
+                <li><a href="https://www.alura.com.br/" target="_blank">Teste de velocidade</a></li>
+                <li><a href="https://www.alura.com.br/" target="_blank">Avisos legais</a></li>
+                <li><a href="https://www.alura.com.br/" target="_blank">Só na Netflix+</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>
